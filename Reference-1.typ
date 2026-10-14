@@ -112,7 +112,7 @@
 ]
 
 #line(length: 100%)
-#block(inset: 5pt, width: 13.07%, radius:0pt, fill: rgb("#57575710"))[
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
   #text(fill: rgb(0,0,0), size: 10pt,)[Example 1.1]
 ] <Example-1.1>
 
@@ -176,7 +176,7 @@ a time interval $[a,t]$ where $a < t$ (or $[t, a]$if $t < a$) is:
 
 #line(length: 100%)
 
-#block(inset: 5pt, width: 13.07%, radius:0pt, fill: rgb("#57575710"))[
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
   #text(fill: rgb(0,0,0), size: 10pt,)[Example 1.2]
 ] <Example-1.2>
 
@@ -208,10 +208,13 @@ Plug in x-values and use the formula for the average velocity.
 
 a. $s(4.99) = 77.98951$ and $s(5) = 77.5 => m_sec = (77.5 - 77.98951)/(5-4.99) = -48.951$
 
-b. $s(5) = 77.5$ and $s(5.01)$
- 
+b. $s(5) = 77.5$ and $s(5.01) = 77.00951 => v_"avg" = (77.00951 - 77.5)/(5.01 - 5) = -49.049$
 
-The point in part b. is closer to the given point the slope of 2.5 is closer to the slope of the tangent line. A good estimate for the instantaneous change would be in the range of 2 to 2.5.
+c. $s(4.999) = 77.5489951$ and $s(5) = 77.5 => v_"avg" = (77.5 - 77.5489951)/(5 - 4.999) = -48.9951$
+
+d. $s(5) = 77.5$ and $s(5.001) = 77.4509951 => v_"avg" = (77.4509951 - 77.5)/(5.001 - 5) = -49.0049$
+
+$=> v(5) approx -49$ m/s
 ]
 
 #line(length: 100%)
@@ -234,7 +237,7 @@ The point in part b. is closer to the given point the slope of 2.5 is closer to 
 
 
 
-#block(inset: 5pt, width: 13.07%, radius:0pt, fill: rgb("#57575710"))[
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
   #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.1]
 ] <Example-2.1>
 
@@ -298,4 +301,743 @@ different.
     #align(center)[$display(lim_(x->a^+) f(x) = L)$]
 ]
 
-Example BLAH BLAH BLAH
+#line(length: 100%)
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.2]
+] <Example-2.2>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Evaluating One-Sided Limits
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $display(f(x) = cases(x + 1 & "if" x < 2, x^2 - 4 & "if" x >= 2))$. Evaluate $display(lim_(x->2^-) f(x))$ and $display(lim_(x->2^+) f(x))$.
+  #figure(
+  image("Assets/oneSidedGraph.jpg", width: 35%),
+  caption: [
+    #text(fill: rgb("#7d1e1e"), size: 9pt)[Different one-sided limits at $x = 2$.]
+  ],
+) <one-sided-graph>
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $display(lim_(x->2^-) (x + 1)) = 2 + 1 = 3 quad quad display(lim_(x->2^+) (x^2 - 4)) = 4 - 4 = 0$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt
+)[*Theorem (Two-Sided Limits)* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$display(lim_(x->a) f(x) = L) quad <=> quad display(lim_(x->a^-) f(x) = lim_(x->a^+) f(x) = L)$]
+    Example 2.2: $3 != 0 =>$ $display(lim_(x->2) f(x))$ DNE.
+]
+
+#line(length: 100%)
+
+#text(fill:rgb("#7d1e1e"),size:13pt)[*Infinite Limits*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt
+)[*Definition* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    $display(lim_(x->a^-) f(x) = +infinity)$: $f(x)$ increases without bound as $x -> a$ from the left. ($-infinity$: decreases without bound. $a^+$: from the right.)
+
+    $display(lim_(x->a) f(x) = plus.minus infinity)$ only if both one-sided limits are the same $plus.minus infinity$.
+
+    $infinity$ is not a number: an infinite limit DNE.
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.3]
+] <Example-2.3>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Recognizing an Infinite Limit
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->0^-) 1/x)$, $display(lim_(x->0^+) 1/x)$, and $display(lim_(x->0) 1/x)$.
+  #figure(
+  image("Assets/reciprocalGraph.jpg", width: 35%),
+  caption: [
+    #text(fill: rgb("#7d1e1e"), size: 9pt)[$f(x) = 1/x$ near $x = 0$.]
+  ],
+) <reciprocal-graph>
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $x -> 0^- => x < 0 => display(lim_(x->0^-) 1/x = -infinity)$
+
+  $x -> 0^+ => x > 0 => display(lim_(x->0^+) 1/x = +infinity)$
+
+  $-infinity != +infinity => display(lim_(x->0) 1/x)$ DNE
+]
+
+#line(length: 100%)
+
+#text(fill:rgb("#7d1e1e"),size:13pt)[*Vertical Asymptotes*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Definition* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    $x = a$ is a *vertical asymptote* of $f$ if $display(lim_(x->a^-) f(x))$, $display(lim_(x->a^+) f(x))$, or $display(lim_(x->a) f(x))$ is $plus.minus infinity$.
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt
+)[*Theorem* ($n$ a positive integer) \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    $n$ even: $display(lim_(x->a) 1/(x - a)^n = +infinity) quad quad$ $n$ odd: $display(lim_(x->a^-) 1/(x - a)^n = -infinity), display(lim_(x->a^+) 1/(x - a)^n = +infinity)$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.4]
+] <Example-2.4>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Finding a Vertical Asymptote
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Find the vertical asymptote of $display(f(x) = 1/(x + 2)^3)$.
+  #figure(
+  image("Assets/asymptoteGraph.jpg", width: 35%),
+  caption: [
+    #text(fill: rgb("#7d1e1e"), size: 9pt)[Vertical asymptote at $x = -2$.]
+  ],
+) <asymptote-graph>
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $x + 2 = x - (-2) => a = -2, n = 3$ (odd)
+
+  $display(lim_(x->-2^-) 1/(x + 2)^3 = -infinity), quad display(lim_(x->-2^+) 1/(x + 2)^3 = +infinity) => x = -2$
+]
+
+#line(length: 100%)
+
+#text(size:13pt)[*Sec 2.3* *The Limit Laws*]
+
+#text(fill:rgb("#7d1e1e"),size:13pt)[*Limit Laws*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Limit Laws ($display(lim_(x->a) f(x) = L)$, $display(lim_(x->a) g(x) = M)$, $c$ constant)* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #table(columns: (auto, 1fr), stroke: none, inset: 4pt,
+      [Sum/Difference], [$display(lim_(x->a) (f(x) plus.minus g(x)) = L plus.minus M)$],
+      [Constant multiple], [$display(lim_(x->a) c f(x) = c L)$],
+      [Product], [$display(lim_(x->a) f(x) g(x) = L M)$],
+      [Quotient], [$display(lim_(x->a) f(x)/g(x) = L/M)$, $M != 0$],
+      [Power], [$display(lim_(x->a) (f(x))^n = L^n)$],
+      [Root], [$display(lim_(x->a) root(n, f(x)) = root(n, L))$, $L >= 0$ if $n$ even],
+    )
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Direct Substitution* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    Polynomial $p$: $display(lim_(x->a) p(x) = p(a))$. Rational $p/q$: $display(lim_(x->a) p(x)/q(x) = p(a)/q(a))$ if $q(a) != 0$.
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.5]
+] <Example-2.5>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Direct Substitution
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->3) (2x^2 - 3x + 1)/(5x + 4))$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+$display(lim_(x->3) (2x^2 - 3x + 1)/(5x + 4) = (2(9) - 9 + 1)/(15 + 4) = 10/19)$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Strategy: Substitution Gives $0/0$* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    Factor and cancel #h(1fr) Rationalize (conjugate) #h(1fr) Combine fractions (common denominator)
+
+    $a/0$ with $a != 0$: the limit is $plus.minus infinity$ or DNE. Check one-sided signs.
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.6]
+] <Example-2.6>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Factor and Cancel
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->3) (x^2 - 9)/(x - 3))$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+$display(lim_(x->3) ((x - 3)(x + 3))/(x - 3) = lim_(x->3) (x + 3)) = 6$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.7]
+] <Example-2.7>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Rationalize
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->-1) (sqrt(x + 2) - 1)/(x + 1))$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+$display(lim_(x->-1) (sqrt(x + 2) - 1)/(x + 1) dot (sqrt(x + 2) + 1)/(sqrt(x + 2) + 1) = lim_(x->-1) (x + 1)/((x + 1)(sqrt(x + 2) + 1)) = lim_(x->-1) 1/(sqrt(x + 2) + 1) = 1/2)$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.8]
+] <Example-2.8>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Combine Fractions
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->1) (1/(x + 1) - 1/2)/(x - 1))$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+$display(lim_(x->1) (2 - (x + 1))/(2(x + 1)(x - 1)) = lim_(x->1) (-(x - 1))/(2(x + 1)(x - 1)) = lim_(x->1) (-1)/(2(x + 1)) = -1/4)$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.9]
+] <Example-2.9>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Nonzero Over Zero
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->2^-) (x - 3)/(x^2 - 2x))$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $display((x - 3)/(x(x - 2)))$: numerator $-> -1$; $x -> 2^- => x(x - 2) -> 0^-$
+
+  $=> display(lim_(x->2^-) (x - 3)/(x^2 - 2x) = (-1)/(0^-) = +infinity)$
+]
+
+#text(fill:rgb("#7d1e1e"),size:13pt)[*Squeeze Theorem*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Theorem (Squeeze)* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$g(x) <= f(x) <= h(x)$ near $a$ and $display(lim_(x->a) g(x) = lim_(x->a) h(x) = L) quad => quad display(lim_(x->a) f(x) = L)$]
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.10]
+] <Example-2.10>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Applying the Squeeze Theorem
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Evaluate $display(lim_(x->0) x^2 cos(1/x))$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $-1 <= cos(1/x) <= 1 => -x^2 <= x^2 cos(1/x) <= x^2$
+
+  $display(lim_(x->0) (-x^2) = lim_(x->0) x^2 = 0 => lim_(x->0) x^2 cos(1/x)) = 0$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Trigonometric Limits* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$display(lim_(theta->0) (sin theta)/theta = 1) quad quad display(lim_(theta->0) (1 - cos theta)/theta = 0)$]
+    Match the argument: $display(lim_(x->0) (sin 4x)/x = lim_(x->0) 4 dot (sin 4x)/(4x) = 4)$
+]
+
+#line(length: 100%)
+
+#text(size:13pt)[*Sec 2.4* *Continuity*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Definition* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    $f$ is *continuous* at $a$ if:
+    #h(1em) i. $f(a)$ is defined #h(2em) ii. $display(lim_(x->a) f(x))$ exists #h(2em) iii. $display(lim_(x->a) f(x) = f(a))$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Types of Discontinuity* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #table(columns: (auto, 1fr), stroke: none, inset: 4pt,
+      [*Removable*], [$display(lim_(x->a) f(x))$ exists, but $f(a)$ is undefined or $!= display(lim_(x->a) f(x))$],
+      [*Jump*], [$display(lim_(x->a^-) f(x))$ and $display(lim_(x->a^+) f(x))$ exist, but are not equal],
+      [*Infinite*], [$display(lim_(x->a^-) f(x))$ or $display(lim_(x->a^+) f(x))$ is $plus.minus infinity$],
+    )
+]
+
+#figure(
+  image("Assets/discontinuityGraph.jpg", width: 80%),
+  caption: [
+    #text(fill: rgb("#7d1e1e"), size: 9pt)[The three types of discontinuity at $x = 2$.]
+  ],
+) <discontinuity-graph>
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.11]
+] <Example-2.11>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Classifying a Discontinuity
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Classify the discontinuity of $display(f(x) = (x^2 - 4)/(x - 2))$ at $x = 2$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $display(f(2) = 0/0)$ (undefined)
+
+  $display(lim_(x->2) ((x - 2)(x + 2))/(x - 2) = lim_(x->2) (x + 2)) = 4 =>$ removable
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Continuous Functions* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    Polynomials, rational functions (on their domains), $sin x$, $cos x$, $e^x$, $root(n, x)$ (on their domains).
+
+    Composition: $g$ continuous at $L$ and $display(lim_(x->a) f(x) = L) => display(lim_(x->a) g(f(x)) = g(L))$
+
+    Continuous on an interval: continuous at every point (one-sided at closed endpoints).
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.12]
+] <Example-2.12>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Making a Function Continuous
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Find $k$ so $display(f(x) = cases(k x + 1 & "if" x < 2, x^2 & "if" x >= 2))$ is continuous at $x = 2$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $display(lim_(x->2^-) (k x + 1)) = 2k + 1, quad display(lim_(x->2^+) x^2) = 4 = f(2)$
+
+  $2k + 1 = 4 => k = 3/2$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Intermediate Value Theorem (IVT)* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$f$ continuous on $[a, b]$, $z$ between $f(a)$ and $f(b)$ $quad => quad exists c in (a, b)$ with $f(c) = z$]
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.13]
+] <Example-2.13>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Using the IVT
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Show $f(x) = x^3 + x - 1$ has a zero in $[0, 1]$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $f$ is a polynomial $=>$ continuous on $[0, 1]$
+
+  $f(0) = -1 < 0, quad f(1) = 1 > 0 => exists c in (0, 1)$ with $f(c) = 0$
+]
+
+#line(length: 100%)
+
+#text(size:13pt)[*Sec 2.5* *The Precise Definition of a Limit*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Definition ($epsilon$–$delta$)* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$display(lim_(x->a) f(x) = L) quad <=> quad forall epsilon > 0, exists delta > 0: quad 0 < |x - a| < delta => |f(x) - L| < epsilon$]
+    One-sided: replace $0 < |x - a| < delta$ with $0 < x - a < delta$ (right) or $0 < a - x < delta$ (left).
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Strategy* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    1. Simplify $|f(x) - L| < epsilon$ into the form $|x - a| < (dots)$. #h(1fr) 2. Choose $delta$. #h(1fr) 3. Verify: $0 < |x - a| < delta => |f(x) - L| < epsilon$.
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.14]
+] <Example-2.14>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Linear Function
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Prove $display(lim_(x->1) (2x + 1) = 3)$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $|(2x + 1) - 3| = |2x - 2| = 2|x - 1| < epsilon <=> |x - 1| < epsilon/2 => delta = epsilon/2$
+
+  Verify: $0 < |x - 1| < epsilon/2 => |(2x + 1) - 3| = 2|x - 1| < 2 dot epsilon/2 = epsilon$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 2.15]
+] <Example-2.15>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Quadratic Function
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Prove $display(lim_(x->2) x^2 = 4)$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $|x^2 - 4| = |x - 2||x + 2|$
+
+  Restrict $delta <= 1$: $|x - 2| < 1 => 1 < x < 3 => |x + 2| < 5 => |x^2 - 4| < 5|x - 2|$
+
+  $5|x - 2| < epsilon <=> |x - 2| < epsilon/5 => delta = min(1, epsilon/5)$
+
+  Verify: $0 < |x - 2| < delta => |x^2 - 4| < 5|x - 2| < 5 dot epsilon/5 = epsilon$
+]
+
+#pagebreak(weak: true)
+#text(size:13pt)[*Sec 3.1* *Defining the Derivative*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Definition (Derivative at $a$)* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$display(f'(a) = lim_(x->a) (f(x) - f(a))/(x - a) = lim_(h->0) (f(a + h) - f(a))/h)$]
+    $f'(a)$ = slope of the tangent line at $(a, f(a))$ = instantaneous rate of change at $a$.
+
+    Tangent line: $y = f(a) + f'(a)(x - a)$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 3.1]
+] <Example-3.1>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Tangent Line
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Find the tangent line to $f(x) = x^2 + x$ at $x = 1$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $f(1) = 2, quad f(1 + h) = (1 + h)^2 + (1 + h) = 2 + 3h + h^2$
+
+  $display(f'(1) = lim_(h->0) (2 + 3h + h^2 - 2)/h = lim_(h->0) (h(3 + h))/h = lim_(h->0) (3 + h)) = 3$
+
+  $y = 2 + 3(x - 1) => y = 3x - 1$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 3.2]
+] <Example-3.2>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Using the $x -> a$ Form
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Find $f'(4)$ for $f(x) = sqrt(x)$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+$display(f'(4) = lim_(x->4) (sqrt(x) - 2)/(x - 4) = lim_(x->4) (sqrt(x) - 2)/((sqrt(x) - 2)(sqrt(x) + 2)) = lim_(x->4) 1/(sqrt(x) + 2) = 1/4)$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Velocity* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    Position $s(t)$: instantaneous velocity $v(a) = s'(a)$.
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 3.3]
+] <Example-3.3>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Instantaneous Velocity
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $s(t) = 200 - 4.9t^2$ (Example 1.2). Find $v(5)$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $s(5 + h) = 200 - 4.9(25 + 10h + h^2) = 77.5 - 49h - 4.9h^2$
+
+  $display(v(5) = lim_(h->0) (77.5 - 49h - 4.9h^2 - 77.5)/h = lim_(h->0) (-49 - 4.9h)) = -49$ m/s
+]
+
+#line(length: 100%)
+
+#block(breakable: false)[
+#text(size:13pt)[*Sec 3.2* *The Derivative as a Function*]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Definition* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    #align(center)[$display(f'(x) = lim_(h->0) (f(x + h) - f(x))/h)$]
+    Notation: $f'(x) = y' = display((d y)/(d x)) = display(d/(d x) f(x))$
+]
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 3.4]
+] <Example-3.4>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Polynomial
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Find $f'(x)$ for $f(x) = x^2 - 2x$.
+  #figure(
+  image("Assets/derivativeGraph.jpg", width: 35%),
+  caption: [
+    #text(fill: rgb("#7d1e1e"), size: 9pt)[$f' < 0$ where $f$ decreases, $f' = 0$ at the minimum, $f' > 0$ where $f$ increases.]
+  ],
+) <derivative-graph>
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $f(x + h) - f(x) = (x^2 + 2x h + h^2 - 2x - 2h) - (x^2 - 2x) = 2x h + h^2 - 2h$
+
+  $display(f'(x) = lim_(h->0) (h(2x + h - 2))/h = lim_(h->0) (2x + h - 2)) = 2x - 2$
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 3.5]
+] <Example-3.5>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  Square Root
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Find $f'(x)$ for $f(x) = sqrt(x)$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+$display(f'(x) = lim_(h->0) (sqrt(x + h) - sqrt(x))/h dot (sqrt(x + h) + sqrt(x))/(sqrt(x + h) + sqrt(x)) = lim_(h->0) h/(h(sqrt(x + h) + sqrt(x))) = 1/(2 sqrt(x)))$
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Graph of $f'$* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    $f' > 0 =>$ $f$ increasing #h(1fr) $f' < 0 =>$ $f$ decreasing #h(1fr) $f' = 0 =>$ horizontal tangent
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Differentiability* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    Differentiable at $a$ $=>$ continuous at $a$. The converse is false.
+
+    $f'(a)$ fails to exist at: a discontinuity, a corner ($|x|$ at $0$), a vertical tangent ($root(3, x)$ at $0$).
+]
+
+#block(inset: 5pt, width: auto, radius:0pt, fill: rgb("#57575710"))[
+  #text(fill: rgb(0,0,0), size: 10pt,)[Example 3.6]
+] <Example-3.6>
+
+#text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
+  A Corner
+]
+
+#text(fill: rgb(0,0,0), size: 9pt)[
+  Show $f(x) = |x|$ is not differentiable at $x = 0$.
+]
+
+#text(fill: rgb("#7d1e1e"), size: 9pt)[#sym.checkmark *solution*
+]
+\
+#text(fill: rgb(0,0,0), size: 9pt)[
+  $display(lim_(h->0^+) abs(h)/h = lim_(h->0^+) h/h = 1)$, $quad display(lim_(h->0^-) abs(h)/h = lim_(h->0^-) (-h)/h = -1)$
+
+  $1 != -1 => f'(0)$ DNE
+]
+
+#block(
+  fill: rgb("#57575710"),
+  inset: 10pt,
+  width: 100%,
+  radius: 0pt,
+  breakable: false
+)[*Higher-Order Derivatives* \
+    #line(length:100%, stroke: (thickness: 0.1pt))
+    $f''(x) = (f'(x))'$, #h(0.5em) $f'''(x)$, #h(0.5em) $f^((4))(x)$ #h(2em) Notation: $display((d^2 y)/(d x^2))$
+
+    Position $s(t)$ $->$ velocity $v(t) = s'(t)$ $->$ acceleration $a(t) = v'(t) = s''(t)$
+]
