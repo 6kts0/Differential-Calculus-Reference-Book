@@ -10,13 +10,17 @@
   number-align: right + bottom
 )
 #set figure.caption(separator: [])
+#let chap = state("chap", 2)
 #set figure(
   supplement: [Figure],
-  numbering: n => {
-    let ch = counter(heading).get().at(1, default: 1)
-    if ch == 0 { numbering("1", n) } else { numbering("1.1", ch, n) }
-  },
+  numbering: n => numbering("1.1", chap.get(), n),
 )
+
+// Heading styles (match the original #text titles)
+#show heading.where(level: 1): it => block(above: 1.2em, below: 0.8em, text(size: 15pt, weight: "bold", it.body))
+#show heading.where(level: 2): it => block(above: 1.1em, below: 0.7em, text(size: 13pt, weight: "bold", it.body))
+#show heading.where(level: 3): it => block(above: 1.1em, below: 0.7em, text(fill: rgb("#7d1e1e"), size: 13pt, weight: "bold", it.body))
+#show outline.entry.where(level: 1): set text(weight: "bold")
 
 // Header, Contact-info, title
 #align(right)[#text(size:8pt)[*Differential Calculus*]]
@@ -24,19 +28,20 @@
 #align(right)[#text(size:8pt)[*(619) 215-3789*]]
 #align(center)[#text(size:15pt)[*Reference for Differential Calculus*]]
 #line(length: 100%)
-#text(size:13pt)[*Sec 2.1* *A Preview of Calculus*]
 
-// Auto updating figure number
-#show heading.where(level: 1): it => {
-  counter(figure.where(kind: image)).update()
-}
+#outline(title: [Contents], depth: 3, indent: auto)
+
+#pagebreak()
+= Chapter 2 Limits
+== Sec 2.1 A Preview of Calculus
+
 #show figure.caption: it => context [
   #text(fill: rgb("#7d1e1e"), size: 9pt, weight: "bold")[
     #it.supplement #it.counter.display(it.numbering)#it.separator
   ]#it.body
 ]
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Rate of Change*]
+=== Rate of Change
 
 #show figure.caption: it => align(left, it)
 #figure(
@@ -61,7 +66,7 @@
 #line(length: 100%)
 
 // Secant lines and Tangent lines etc
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Approximating Rates of Change*]
+=== Approximating Rates of Change
 
 #text(fill: rgb("#000000"), size: 9pt)[We can approximate the rate of change of a function $f(x)$ at a point on its graph by taking another point on the graph of $f(x)$, drawing a line through the two points, and calculating the slope of the resulting line. Such a line is called a *secant* line. @secant-function shows a secant line to a function $f(x)$ at a point $(a, f(a))$.]
 
@@ -145,7 +150,7 @@ The point in part b. is closer to the given point the slope of 2.5 is closer to 
 
 #line(length: 100%)
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Average and Instantaneous Velocity*]
+=== Average and Instantaneous Velocity
 
 #block(
   fill: rgb("#57575710"),
@@ -219,9 +224,9 @@ $=> v(5) approx -49$ m/s
 
 #line(length: 100%)
 
-#text(size:13pt)[*Sec 2.2* *Limits*]
+== Sec 2.2 Limits
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Intuitive Limit Definition*]
+=== Intuitive Limit Definition
 
 #block(
   fill: rgb("#57575710"),
@@ -282,7 +287,7 @@ different.
     #text[ii.#align(center)[$display(lim_(x->a) c = c)$]]
 ]
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*One-Sided Limits*]
+=== One-Sided Limits
 
 
 #block(
@@ -341,7 +346,7 @@ different.
 
 #line(length: 100%)
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Infinite Limits*]
+=== Infinite Limits
 
 #block(
   fill: rgb("#57575710"),
@@ -388,7 +393,7 @@ different.
 
 #line(length: 100%)
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Vertical Asymptotes*]
+=== Vertical Asymptotes
 
 #block(
   fill: rgb("#57575710"),
@@ -440,9 +445,7 @@ different.
 
 #line(length: 100%)
 
-#text(size:13pt)[*Sec 2.3* *The Limit Laws*]
-
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Limit Laws*]
+== Sec 2.3 The Limit Laws
 
 #block(
   fill: rgb("#57575710"),
@@ -583,7 +586,7 @@ $display(lim_(x->1) (2 - (x + 1))/(2(x + 1)(x - 1)) = lim_(x->1) (-(x - 1))/(2(x
   $=> display(lim_(x->2^-) (x - 3)/(x^2 - 2x) = (-1)/(0^-) = +infinity)$
 ]
 
-#text(fill:rgb("#7d1e1e"),size:13pt)[*Squeeze Theorem*]
+=== Squeeze Theorem
 
 #block(
   fill: rgb("#57575710"),
@@ -631,7 +634,7 @@ $display(lim_(x->1) (2 - (x + 1))/(2(x + 1)(x - 1)) = lim_(x->1) (-(x - 1))/(2(x
 
 #line(length: 100%)
 
-#text(size:13pt)[*Sec 2.4* *Continuity*]
+== Sec 2.4 Continuity
 
 #block(
   fill: rgb("#57575710"),
@@ -758,7 +761,7 @@ $display(lim_(x->1) (2 - (x + 1))/(2(x + 1)(x - 1)) = lim_(x->1) (-(x - 1))/(2(x
 
 #line(length: 100%)
 
-#text(size:13pt)[*Sec 2.5* *The Precise Definition of a Limit*]
+== Sec 2.5 The Precise Definition of a Limit
 
 #block(
   fill: rgb("#57575710"),
@@ -830,7 +833,10 @@ $display(lim_(x->1) (2 - (x + 1))/(2(x + 1)(x - 1)) = lim_(x->1) (-(x - 1))/(2(x
 ]
 
 #pagebreak(weak: true)
-#text(size:13pt)[*Sec 3.1* *Defining the Derivative*]
+#chap.update(3)
+#counter(figure.where(kind: image)).update(0)
+= Chapter 3 Derivatives
+== Sec 3.1 Defining the Derivative
 
 #block(
   fill: rgb("#57575710"),
@@ -923,7 +929,7 @@ $display(f'(4) = lim_(x->4) (sqrt(x) - 2)/(x - 4) = lim_(x->4) (sqrt(x) - 2)/((s
 #line(length: 100%)
 
 #block(breakable: false)[
-#text(size:13pt)[*Sec 3.2* *The Derivative as a Function*]
+== Sec 3.2 The Derivative as a Function
 
 #block(
   fill: rgb("#57575710"),
